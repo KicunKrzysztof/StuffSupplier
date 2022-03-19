@@ -16,18 +16,19 @@ namespace StuffSupplierAPI.Repositories
 
         public async Task<List<Order>> GetOrders()
         {
-            var orders = await _context.Orders.ToListAsync();
+            var orders = await _context.Orders.Include(o => o.OrderItems).Include(o => o.Address).ToListAsync();
             return orders;
         }
 
-        public Task<Order> GetOrder(int id)
+        public async Task<Order> GetOrder(int id)
         {
-            throw new NotImplementedException();
+            var order = await _context.Orders.FirstOrDefaultAsync(o => o.Id == id);
+            return order;
         }
 
-        public Task<Order> AddOrder(Order order)
+        public async Task<Order> AddOrder(Order order, int addressId)
         {
-            throw new NotImplementedException();
+            return null;
         }
     }
 }
