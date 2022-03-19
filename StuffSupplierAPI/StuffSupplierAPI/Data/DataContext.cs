@@ -13,5 +13,6 @@ namespace StuffSupplierAPI.Data
 
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Offer> Offers { get; set; }
+        public DbSet<ItemName> ItemNames { get; set; }
     }
 }

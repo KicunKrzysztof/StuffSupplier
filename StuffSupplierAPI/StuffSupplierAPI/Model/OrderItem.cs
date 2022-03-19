@@ -8,6 +8,8 @@ namespace StuffSupplierAPI.Model
 
         public string ItemName { get; set; }
 
+        public int ItemNameId { get; set; }
+
         public int InitialQuantity { get; set; }
 
         public int ProvidedQuantity { get; set; }

@@ -39,6 +39,7 @@ namespace StuffSupplierAPI.Repositories
             dbOffer.PhoneNumber = offer.PhoneNumber;
             dbOffer.Quantity = offer.Quantity;
             dbOffer.Unit = offer.Unit;
+            dbOffer.ItemNameId = offer.ItemNameId;
             await _context.SaveChangesAsync();
             return await GetOffer(offer.Id);
         }

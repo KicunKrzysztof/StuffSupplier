@@ -44,6 +44,7 @@ namespace StuffSupplierAPI.Repositories
                     dbItem.Unit = item.Unit;
                     dbItem.InitialQuantity = item.InitialQuantity;
                     dbItem.ProvidedQuantity = item.ProvidedQuantity;
+                    dbItem.ItemNameId = item.ItemNameId;
                 }
                 else
                     dbOrder.OrderItems.Add(item);
