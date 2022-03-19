@@ -26,9 +26,11 @@ namespace StuffSupplierAPI.Repositories
             return order;
         }
 
-        public async Task<Order> AddOrder(Order order, int addressId)
+        public async Task<Order> AddOrder(Order order)
         {
-            return null;
+            var addedOrder = _context.Orders.Add(order);
+            await _context.SaveChangesAsync();
+            return await GetOrder(addedOrder.Entity.Id);
         }
     }
 }
