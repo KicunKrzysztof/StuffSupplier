@@ -27,5 +27,9 @@ namespace StuffSupplierAPI.Services
             var order = await _orderRepository.AddOrder(newOrder);
             return order;
         }
+        public async Task<Order> UpdateOrder(Order newOrder)
+        {
+            return await _orderRepository.UpdateOrder(newOrder);
+        }
     }
 }

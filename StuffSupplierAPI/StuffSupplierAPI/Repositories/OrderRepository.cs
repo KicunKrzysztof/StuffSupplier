@@ -32,5 +32,37 @@ namespace StuffSupplierAPI.Repositories
             await _context.SaveChangesAsync();
             return await GetOrder(addedOrder.Entity.Id);
         }
+        public async Task<Order> UpdateOrder(Order order)
+        {
+            var dbOrder = await _context.Orders.Include(o => o.OrderItems).Include(o => o.Address).FirstOrDefaultAsync(o => o.Id == order.Id);
+            //dbOrder = order;
+            //dbOrder.OrderItems = order.OrderItems;
+            foreach (var item in order.OrderItems)
+            {
+                var dbItem = await _context.OrderItems.FirstOrDefaultAsync(i => i.Id == item.Id);
+                if (dbItem != null)
+                {
+                    dbItem.ItemName = item.ItemName;
+                    dbItem.Unit = dbItem.Unit;
+                    dbItem.InitialQuantity = dbItem.InitialQuantity;
+                    dbItem.ProvidedQuantity = dbItem.ProvidedQuantity;
+                }
+                else
+                {
+                    dbOrder.OrderItems.Add(item);
+                }
+            }
+            //dbOrder.Address = (Address)order.Address.Clone();
+            dbOrder.Address.Street = order.Address.Street;
+            dbOrder.Address.City = order.Address.City;
+            dbOrder.Address.PostalCode = order.Address.PostalCode;
+            dbOrder.Address.Country = order.Address.Country;
+            dbOrder.PhoneNumber = order.PhoneNumber;
+            dbOrder.OrderStatus = order.OrderStatus;
+            dbOrder.Email = order.Email;
+            dbOrder.Description = order.Description;
+            await _context.SaveChangesAsync();
+            return await GetOrder(order.Id);
+        }
     }
 }

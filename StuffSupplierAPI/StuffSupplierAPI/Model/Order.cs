@@ -6,7 +6,7 @@ namespace StuffSupplierAPI.Model
     {
         public int Id { get; set; }
 
-        public IEnumerable<OrderItem> OrderItems { get; set; }
+        public ICollection<OrderItem> OrderItems { get; set; }
 
         public OrderStatus OrderStatus { get; set; }
 
@@ -17,7 +17,6 @@ namespace StuffSupplierAPI.Model
         public string Email { get; set; }
 
         public string PhoneNumber { get; set; }
-
 
     }
 }

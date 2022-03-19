@@ -38,5 +38,12 @@ namespace StuffSupplierAPI.Controllers
             var orders = await _orderService.AddOrder(newOrder);
             return Ok(orders);
         }
+        [HttpPut]
+        [Route("orders")]
+        public async Task<IActionResult> UpdateOrder(Order newOrder)
+        {
+            var orders = await _orderService.UpdateOrder(newOrder);
+            return Ok(orders);
+        }
     }
 }
