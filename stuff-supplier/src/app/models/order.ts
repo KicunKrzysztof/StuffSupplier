@@ -1,7 +1,7 @@
-import { Address } from "./Address";
-import { OrderItem } from "./OrderItem";
+import { Address } from "./address";
+import { OrderItem } from "./order-item";
 
-export interface Order{
+export interface Order {
     id: number;
     description: string;
     adress: Address;

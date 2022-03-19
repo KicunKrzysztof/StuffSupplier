@@ -1,1 +1,13 @@
-<p>header works!</p>
+<mat-toolbar color="primary">
+    <mat-icon style="padding-right: 10px">add_shopping_cart</mat-icon>
+    <span>{{ title }}</span>
+    <span class="example-spacer"></span>
+    <a mat-button>
+        <mat-icon>add_circle</mat-icon>
+        {{ newOrderButtonText }}
+    </a>
+    <a mat-button>
+        <mat-icon>add_circle_outline</mat-icon>
+        {{ newOfferButtonText }}
+    </a>
+</mat-toolbar>

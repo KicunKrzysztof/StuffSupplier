@@ -1,0 +1,18 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{ order.description }}
+    </mat-panel-title>
+    <mat-panel-description>
+      {{ order.orderStatus }}
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  {{ order.description }}
+  <button mat-button style="color: green">
+    <mat-icon style="color: black">favorite_border</mat-icon>
+    Supply</button>
+  <button mat-button color="warn">
+    <mat-icon style="color: black">delete_forever</mat-icon>
+    Remove
+  </button>
+</mat-expansion-panel>
