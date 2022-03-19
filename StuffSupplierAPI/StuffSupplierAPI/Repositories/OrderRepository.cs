@@ -41,9 +41,9 @@ namespace StuffSupplierAPI.Repositories
                 if (dbItem != null)
                 {
                     dbItem.ItemName = item.ItemName;
-                    dbItem.Unit = dbItem.Unit;
-                    dbItem.InitialQuantity = dbItem.InitialQuantity;
-                    dbItem.ProvidedQuantity = dbItem.ProvidedQuantity;
+                    dbItem.Unit = item.Unit;
+                    dbItem.InitialQuantity = item.InitialQuantity;
+                    dbItem.ProvidedQuantity = item.ProvidedQuantity;
                 }
                 else
                     dbOrder.OrderItems.Add(item);
@@ -64,6 +64,7 @@ namespace StuffSupplierAPI.Repositories
         {
             var order = await _context.Orders.Include(o => o.OrderItems).Include(o => o.Address).FirstOrDefaultAsync(o => o.Id == id);
             _context.Addresses.Remove(order.Address);
+            await _context.SaveChangesAsync();
             foreach (var item in order.OrderItems)
                 _context.OrderItems.Remove(item);
             _context.Orders.Remove(order);

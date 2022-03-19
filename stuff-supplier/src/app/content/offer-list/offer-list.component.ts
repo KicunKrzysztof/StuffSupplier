@@ -14,7 +14,7 @@ export class OfferListComponent implements OnInit {
   offers: Offer[] = [];
 
   ngOnInit(): void {
-    this.httpService.get<Offer>('Order/orders').subscribe((offers: Offer[]) => {
+    this.httpService.get<Offer>('Offer/offers').subscribe((offers: Offer[]) => {
       this.offers = offers;
     });
   }

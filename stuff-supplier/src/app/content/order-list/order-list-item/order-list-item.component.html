@@ -9,11 +9,11 @@
   </mat-expansion-panel-header>
   {{ order.description }}
   <div style="padding-top: 10px">
-    <button mat-button style="color: green; float:left" (click)="supply()">
+    <app-remove-button (removed)="remove()" style="float:left"></app-remove-button>
+    <button mat-button style="color: green;" (click)="supply()">
       <mat-icon style="color: black">favorite_border</mat-icon>
       Supply
     </button>
-    <app-remove-button (removed)="remove()"></app-remove-button>
   </div>
 
 

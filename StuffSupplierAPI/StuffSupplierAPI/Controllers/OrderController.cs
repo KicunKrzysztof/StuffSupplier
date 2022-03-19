@@ -24,7 +24,7 @@ namespace StuffSupplierAPI.Controllers
         }
 
         [HttpGet]
-        [Route("orders/{orderId:int}")]
+        [Route("order/{orderId:int}")]
         public async Task<IActionResult> GetOrder(int orderId)
         {
             var orders = await _orderService.GetOrder(orderId);
@@ -32,21 +32,21 @@ namespace StuffSupplierAPI.Controllers
         }
 
         [HttpPost]
-        [Route("orders")]
+        [Route("order")]
         public async Task<IActionResult> CreateOrder(Order newOrder)
         {
             var orders = await _orderService.AddOrder(newOrder);
             return Ok(orders);
         }
         [HttpPut]
-        [Route("orders")]
+        [Route("order")]
         public async Task<IActionResult> UpdateOrder(Order newOrder)
         {
             var orders = await _orderService.UpdateOrder(newOrder);
             return Ok(orders);
         }
         [HttpDelete]
-        [Route("orders/{orderId:int}")]
+        [Route("order/{orderId:int}")]
         public async Task<IActionResult> DeleteOrder(int orderId)
         {
             var result = await _orderService.DeleteOrder(orderId);
