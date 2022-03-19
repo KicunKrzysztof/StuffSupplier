@@ -3,8 +3,8 @@ order:
 	description
 	adress(klasa)
 	email
-	phone
-	status(enum: new, inProgress, completed)
+	phoneNumber
+	orderStatus(enum: new, inProgress, completed)
 	orderItems[]
 
 orderItem:
@@ -12,7 +12,7 @@ orderItem:
 	itemName
 	initialQuantity
 	providedQuantity
-	unit(enum: unit, kg, l)
+	unit(enum: unit, kilogram, liter)
 	
 adress:
 	id
