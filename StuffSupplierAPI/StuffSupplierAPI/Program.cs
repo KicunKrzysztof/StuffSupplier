@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using StuffSupplierAPI.Data;
+using StuffSupplierAPI.Interface;
+using StuffSupplierAPI.Repositories;
+using StuffSupplierAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +13,8 @@ builder.Services.AddDbContext<DataContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
