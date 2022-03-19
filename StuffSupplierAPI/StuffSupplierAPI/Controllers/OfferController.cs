@@ -15,34 +15,41 @@ namespace StuffSupplierAPI.Controllers
             _offerService = offerService;
         }
         [HttpGet]
-        [Route("orders")]
+        [Route("offers")]
         public async Task<IActionResult> GetOffers()
         {
             var offers = await _offerService.GetOffers();
             return Ok(offers);
         }
 
-        //[HttpGet]
-        //[Route("orders/{orderId:int}")]
-        //public async Task<IActionResult> GetOrder(int orderId)
-        //{
-        //    var orders = await _orderService.GetOrder(orderId);
-        //    return Ok(orders);
-        //}
+        [HttpGet]
+        [Route("offers/{offerId:int}")]
+        public async Task<IActionResult> GetOffer(int offerId)
+        {
+            var offer = await _offerService.GetOffer(offerId);
+            return Ok(offer);
+        }
 
-        //[HttpPost]
-        //[Route("orders")]
-        //public async Task<IActionResult> CreateOrder(Order newOrder)
-        //{
-        //    var orders = await _orderService.AddOrder(newOrder);
-        //    return Ok(orders);
-        //}
-        //[HttpPut]
-        //[Route("orders")]
-        //public async Task<IActionResult> UpdateOrder(Order newOrder)
-        //{
-        //    var orders = await _orderService.UpdateOrder(newOrder);
-        //    return Ok(orders);
-        //}
+        [HttpPost]
+        [Route("offers")]
+        public async Task<IActionResult> CreateOrder(Offer newOffer)
+        {
+            var offer = await _offerService.AddOffer(newOffer);
+            return Ok(offer);
+        }
+        [HttpPut]
+        [Route("offers")]
+        public async Task<IActionResult> UpdateOrder(Offer newOffer)
+        {
+            var offer = await _offerService.UpdateOffer(newOffer);
+            return Ok(offer);
+        }
+        [HttpDelete]
+        [Route("offers/{offerId:int}")]
+        public async Task<IActionResult> DeleteOffer(int offerId)
+        {
+            var result = await _offerService.DeleteOffer(offerId);
+            return Ok(result);
+        }
     }
 }

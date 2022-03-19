@@ -13,24 +13,42 @@ namespace StuffSupplierAPI.Repositories
         {
             _context = context;
         }
-        public Task<Offer> AddOffer(Offer offer)
+        public async Task<Offer> AddOffer(Offer offer)
         {
-            throw new NotImplementedException();
+            var addedOffer = _context.Offers.Add(offer);
+            await _context.SaveChangesAsync();
+            return await GetOffer(addedOffer.Entity.Id);
         }
 
-        public Task<List<Offer>> GetOffers()
+        public async Task<List<Offer>> GetOffers()
         {
-            throw new NotImplementedException();
+            return await _context.Offers.ToListAsync();
         }
 
-        public Task<Offer> GetOffer(int id)
+        public async Task<Offer> GetOffer(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Offers.FirstOrDefaultAsync(o => o.Id == id);
         }
 
-        public Task<Offer> UpdateOffer(Offer offer)
+        public async Task<Offer> UpdateOffer(Offer offer)
         {
-            throw new NotImplementedException();
+            var dbOffer = _context.Offers.FirstOrDefault(o => o.Id == offer.Id);
+            dbOffer.Description = offer.Description;
+            dbOffer.Email = offer.Email;
+            dbOffer.ItemName = offer.ItemName;
+            dbOffer.PhoneNumber = offer.PhoneNumber;
+            dbOffer.Quantity = offer.Quantity;
+            dbOffer.Unit = offer.Unit;
+            await _context.SaveChangesAsync();
+            return await GetOffer(offer.Id);
+        }
+
+        public async Task<bool> DeleteOffer(int id)
+        {
+            var offer = await _context.Offers.FirstOrDefaultAsync(o => o.Id == id);
+            _context.Offers.Remove(offer);
+            await _context.SaveChangesAsync();
+            return true;
         }
     }
 }

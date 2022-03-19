@@ -8,5 +8,6 @@ namespace StuffSupplierAPI.Interface
             Task<Offer> GetOffer(int id);
             Task<Offer> AddOffer(Offer newOffer);
             Task<Offer> UpdateOffer(Offer newOffer);
+            Task<Boolean> DeleteOffer(int id);
     }
 }
