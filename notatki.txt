@@ -1,0 +1,23 @@
+order:
+	id
+	description
+	adress(klasa)
+	email
+	phone
+	status(enum: new, inProgress, completed)
+	orderItems[]
+
+orderItem:
+	id
+	itemName
+	initialQuantity
+	providedQuantity
+	unit(enum: unit, kg, l)
+	
+adress:
+	id
+	country
+	city
+	street
+	postalCode	
+	
