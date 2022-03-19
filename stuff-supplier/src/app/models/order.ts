@@ -1,12 +1,12 @@
-import { address } from "./address";
-import { orderItem } from "./orderItem";
+import { Address } from "./Address";
+import { OrderItem } from "./OrderItem";
 
-export interface order{
+export interface Order{
     id: number;
     description: string;
-    adress: address;
+    adress: Address;
     email: string;
     phoneNumber: string;
     orderStatus: string;
-    orderItems: orderItem[];
+    orderItems: OrderItem[];
 }
