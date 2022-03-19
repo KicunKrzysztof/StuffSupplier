@@ -45,5 +45,12 @@ namespace StuffSupplierAPI.Controllers
             var orders = await _orderService.UpdateOrder(newOrder);
             return Ok(orders);
         }
+        [HttpDelete]
+        [Route("orders/{orderId:int}")]
+        public async Task<IActionResult> DeleteOrder(int orderId)
+        {
+            var result = await _orderService.DeleteOrder(orderId);
+            return Ok(result);
+        }
     }
 }

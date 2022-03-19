@@ -22,7 +22,7 @@ namespace StuffSupplierAPI.Repositories
 
         public async Task<Order> GetOrder(int id)
         {
-            var order = await _context.Orders.FirstOrDefaultAsync(o => o.Id == id);
+            var order = await _context.Orders.Include(o => o.OrderItems).Include(o => o.Address).FirstOrDefaultAsync(o => o.Id == id);
             return order;
         }
 
@@ -35,8 +35,6 @@ namespace StuffSupplierAPI.Repositories
         public async Task<Order> UpdateOrder(Order order)
         {
             var dbOrder = await _context.Orders.Include(o => o.OrderItems).Include(o => o.Address).FirstOrDefaultAsync(o => o.Id == order.Id);
-            //dbOrder = order;
-            //dbOrder.OrderItems = order.OrderItems;
             foreach (var item in order.OrderItems)
             {
                 var dbItem = await _context.OrderItems.FirstOrDefaultAsync(i => i.Id == item.Id);
@@ -48,11 +46,8 @@ namespace StuffSupplierAPI.Repositories
                     dbItem.ProvidedQuantity = dbItem.ProvidedQuantity;
                 }
                 else
-                {
                     dbOrder.OrderItems.Add(item);
-                }
             }
-            //dbOrder.Address = (Address)order.Address.Clone();
             dbOrder.Address.Street = order.Address.Street;
             dbOrder.Address.City = order.Address.City;
             dbOrder.Address.PostalCode = order.Address.PostalCode;
@@ -63,6 +58,17 @@ namespace StuffSupplierAPI.Repositories
             dbOrder.Description = order.Description;
             await _context.SaveChangesAsync();
             return await GetOrder(order.Id);
+        }
+
+        public async Task<bool> DeleteOrder(int id)
+        {
+            var order = await _context.Orders.Include(o => o.OrderItems).Include(o => o.Address).FirstOrDefaultAsync(o => o.Id == id);
+            _context.Addresses.Remove(order.Address);
+            foreach (var item in order.OrderItems)
+                _context.OrderItems.Remove(item);
+            _context.Orders.Remove(order);
+            await _context.SaveChangesAsync();
+            return true;
         }
     }
 }

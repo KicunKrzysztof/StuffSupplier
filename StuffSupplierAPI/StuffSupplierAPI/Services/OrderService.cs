@@ -31,5 +31,10 @@ namespace StuffSupplierAPI.Services
         {
             return await _orderRepository.UpdateOrder(newOrder);
         }
+
+        public async Task<bool> DeleteOrder(int id)
+        {
+            return await _orderRepository.DeleteOrder(id);
+        }
     }
 }
