@@ -18,4 +18,8 @@ export class OrderListComponent implements OnInit {
       this.orders = orders;
     });
   }
+
+  removeOrder(id: number): void {
+    this.orders = this.orders.filter(o => o.id !== id);
+  }
 }

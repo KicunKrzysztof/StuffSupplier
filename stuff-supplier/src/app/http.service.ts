@@ -12,7 +12,16 @@ export class HttpService {
 
   get<T>(path: string): Observable<T[]> {
     const url = this.baseUrl + path;
-    console.log('sending requiest to ' + url);
     return this.http.get<T[]>(url);
+  }
+
+  delete(path: string, id: number): Observable<boolean> {
+    const url = `${this.baseUrl}${path}/${id}`;
+    return this.http.delete<boolean>(url);
+  }
+
+  put<T>(path: string, body: any): Observable<T> {
+    const url = this.baseUrl + path;
+    return this.http.put<T>(url, body);
   }
 }

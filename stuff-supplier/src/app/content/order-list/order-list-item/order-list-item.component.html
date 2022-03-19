@@ -8,11 +8,13 @@
     </mat-panel-description>
   </mat-expansion-panel-header>
   {{ order.description }}
-  <button mat-button style="color: green">
-    <mat-icon style="color: black">favorite_border</mat-icon>
-    Supply</button>
-  <button mat-button color="warn">
-    <mat-icon style="color: black">delete_forever</mat-icon>
-    Remove
-  </button>
+  <div style="padding-top: 10px">
+    <button mat-button style="color: green; float:left" (click)="supply()">
+      <mat-icon style="color: black">favorite_border</mat-icon>
+      Supply
+    </button>
+    <app-remove-button (removed)="remove()"></app-remove-button>
+  </div>
+
+
 </mat-expansion-panel>
