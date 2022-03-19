@@ -2,8 +2,8 @@
 {
     public enum Unit
     {
-        Unit,
-        Kilogram,
-        Liter
+        Unit = 1,
+        Kilogram = 2,
+        Liter = 3
     }
 }
