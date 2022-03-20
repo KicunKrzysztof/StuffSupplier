@@ -1,13 +1,17 @@
 <mat-expansion-panel>
   <mat-expansion-panel-header>
     <mat-panel-title>
-      {{ order.description }}
+      {{ title }}
     </mat-panel-title>
     <mat-panel-description>
-      {{ order.orderStatus }}
+      {{ orderStatus }}
     </mat-panel-description>
   </mat-expansion-panel-header>
-  {{ order.description }}
+  <p> {{ order.description }} </p>
+  <p> {{ order.address.street }} </p>
+  <p> {{ order.address.country }} </p>
+  <p> {{ order.address.city }} </p>
+  <p> {{ order.address.postalCode }} </p>
   <div style="padding-top: 10px">
     <app-remove-button (removed)="remove()" style="float:left"></app-remove-button>
     <button mat-button style="color: green;" (click)="supply()">
