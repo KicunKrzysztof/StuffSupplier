@@ -25,6 +25,7 @@ export class HeaderComponent {
 
   newOrder(): void {
     const order = { address: {} as Address } as Order;
+    order.orderStatus = 1;
     const dialogRef = this.dialog.open(NewOrderDialogComponent, { width: '900px', data: order });
     dialogRef.afterClosed().pipe(
       switchMap(result => result ? this.httpService.post<Order>('Order/order', order) : EMPTY)

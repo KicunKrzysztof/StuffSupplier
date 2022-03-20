@@ -5,5 +5,5 @@ export interface Offer {
     itemName?: string;
     description?: string;
     quantity?: number;
-    unit?: Unit;
+    unit?: number;
 }

@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { EMPTY, Observable, switchMap } from 'rxjs';
 import { SupplyDialogComponent } from './supply-dialog/supply-dialog.component';
 import { OrderStatus } from 'src/app/enums/order-status';
+import { UnitPipe } from 'src/app/pipes/UnitPipe';
 
 @Component({
   selector: 'app-order-list-item',
@@ -24,12 +25,17 @@ export class ListItemComponent implements OnInit, OnChanges {
     console.log(this.order);
   }
   ngOnChanges(changes: SimpleChanges): void {
+    if (this.order.orderStatus){
     this.orderStatus = OrderStatus[this.order.orderStatus];
     this.title = ""
+    }
+    if (this.order.orderItems){
     this.order.orderItems.forEach(element => {
       this.title = this.title + " " + element.itemName;
     });
     this.title = this.title.substring(0, 30)
+    }
+    
   }
 
   supply(): void {

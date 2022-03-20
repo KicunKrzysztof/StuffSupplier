@@ -9,6 +9,6 @@ export class Order {
     address?: Address;
     email?: string;
     phoneNumber?: string;
-    orderStatus?: string;
+    orderStatus?: number;
     orderItems?: OrderItem[];
 }

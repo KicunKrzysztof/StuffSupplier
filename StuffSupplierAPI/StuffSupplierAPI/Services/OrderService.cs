@@ -1,5 +1,6 @@
 ﻿using StuffSupplierAPI.Interface;
 using StuffSupplierAPI.Model;
+using StuffSupplierAPI.Model.Enum;
 
 namespace StuffSupplierAPI.Services
 {
@@ -29,6 +30,10 @@ namespace StuffSupplierAPI.Services
         }
         public async Task<Order> UpdateOrder(Order newOrder)
         {
+            if (newOrder.OrderItems.Any(item => item.ProvidedQuantity > 0))
+                newOrder.OrderStatus = OrderStatus.InProgress;
+            if (newOrder.OrderItems.All(item => item.ProvidedQuantity == item.InitialQuantity))
+                newOrder.OrderStatus = OrderStatus.Completed;
             return await _orderRepository.UpdateOrder(newOrder);
         }
 

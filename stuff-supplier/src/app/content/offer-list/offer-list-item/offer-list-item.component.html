@@ -1,11 +1,45 @@
 <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
-        {{ offer.description }}
+        {{ offer.itemName }}
       </mat-panel-title>
       <mat-panel-description>
         {{ offer.quantity }}
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <p>This is the primary content of the panel.</p>
+
+    <div *ngIf="offer">
+      <mat-grid-list cols="2" rowHeight="4:1">
+        <mat-grid-tile class="first-cell">
+          <div class="first-column">
+            <p>Description: </p>
+          </div>
+      </mat-grid-tile>
+        <mat-grid-tile class="second-cell">
+          <div class="second-column">
+            <p> {{ offer.description }} </p>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <mat-grid-list cols="2" rowHeight="2:1">
+      <mat-grid-tile class="first-cell">
+        <div class="first-column">
+          <p>Item name: </p>
+          <p>Quantity: </p>
+          <p>Unit: </p>
+        </div>
+    </mat-grid-tile>
+      <mat-grid-tile class="second-cell">
+        <div class="second-column">
+          <p> {{ offer.itemName }} </p>
+          <p> {{ offer.quantity }} </p>
+          <p *ngIf="offer.unit"> {{ offer.unit | unitPipe }} </p>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+
   </mat-expansion-panel>

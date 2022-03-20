@@ -30,6 +30,9 @@ import { SupplyDialogComponent } from './content/order-list/order-list-item/supp
 import { FormsModule } from '@angular/forms';
 import { NewOrderDialogComponent } from './header/new-order-dialog/new-order-dialog.component';
 import { NewOfferDialogComponent } from './header/new-offer-dialog/new-offer-dialog.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDividerModule } from '@angular/material/divider';
+import { UnitPipe } from './pipes/UnitPipe';
 
 
 @NgModule({
@@ -47,7 +50,8 @@ import { NewOfferDialogComponent } from './header/new-offer-dialog/new-offer-dia
     RemoveButtonComponent,
     SupplyDialogComponent,
     NewOrderDialogComponent,
-    NewOfferDialogComponent
+    NewOfferDialogComponent,
+    UnitPipe
   ],
   imports: [
     BrowserModule,
@@ -65,7 +69,9 @@ import { NewOfferDialogComponent } from './header/new-offer-dialog/new-offer-dia
     MatFormFieldModule,
     FormsModule,
     MatSelectModule,
-    MatInputModule
+    MatInputModule,
+    MatGridListModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

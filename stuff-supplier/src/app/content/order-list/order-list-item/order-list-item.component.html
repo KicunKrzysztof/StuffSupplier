@@ -7,11 +7,68 @@
       {{ orderStatus }}
     </mat-panel-description>
   </mat-expansion-panel-header>
-  <p> {{ order.description }} </p>
-  <p> {{ order.address.street }} </p>
-  <p> {{ order.address.country }} </p>
-  <p> {{ order.address.city }} </p>
-  <p> {{ order.address.postalCode }} </p>
+<div *ngIf="order">
+  <mat-grid-list cols="2" rowHeight="4:1">
+    <mat-grid-tile class="first-cell">
+      <div class="first-column">
+        <p>Description: </p>
+      </div>
+  </mat-grid-tile>
+    <mat-grid-tile class="second-cell">
+      <div class="second-column">
+        <p> {{ order.description }} </p>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <mat-divider></mat-divider>
+
+  <mat-grid-list cols="2" rowHeight="3:2">
+    <mat-grid-tile class="first-cell">
+      <div class="first-column">
+        <p>Country: </p>
+        <p>City: </p>
+        <p>Postal code: </p>
+        <p>Street: </p>
+        <p>Email: </p>
+        <p>Phone number: </p>
+      </div>
+  </mat-grid-tile>
+    <mat-grid-tile class="second-cell">
+      <div class="second-column">
+        <p *ngIf="order.address"> {{ order.address.country }} </p>
+        <p *ngIf="order.address"> {{ order.address.city }} </p>
+        <p *ngIf="order.address"> {{ order.address.postalCode }} </p>
+        <p *ngIf="order.address"> {{ order.address.street }} </p>
+        <p> {{ order.email }} </p>
+        <p> {{ order.phoneNumber }} </p>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <div *ngFor="let item of order.orderItems">
+    <mat-divider></mat-divider>
+    <mat-grid-list cols="2" rowHeight="2:1">
+      <mat-grid-tile class="first-cell">
+        <div class="first-column">
+          <p>Item name: </p>
+          <p>Asked quantity: </p>
+          <p>Provided quantity: </p>
+          <p>Unit: </p>
+        </div>
+    </mat-grid-tile>
+      <mat-grid-tile class="second-cell">
+        <div class="second-column">
+          <p> {{ item.itemName }} </p>
+          <p> {{ item.initialQuantity }} </p>
+          <p> {{ item.providedQuantity }} </p>
+          <p> {{ item.unit | unitPipe }} </p>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+
+</div>
   <div style="padding-top: 10px">
     <app-remove-button (removed)="remove()" style="float:left"></app-remove-button>
     <button mat-button style="color: green;" (click)="supply()">

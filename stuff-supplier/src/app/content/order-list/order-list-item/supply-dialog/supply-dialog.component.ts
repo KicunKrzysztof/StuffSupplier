@@ -23,8 +23,8 @@ export class SupplyDialogComponent {
     console.log(this.form);
     if (!this.form?.nativeElement.className.includes('invalid')) {
     this.data.forEach(data => {
-      if (data.quantity && data.providedQuantity)
-        data.providedQuantity += data.quantity
+      if (data.quantity != null && data.providedQuantity != null)
+        data.providedQuantity += data.quantity;
     })
     this.dialogRef.close(true);
   }
