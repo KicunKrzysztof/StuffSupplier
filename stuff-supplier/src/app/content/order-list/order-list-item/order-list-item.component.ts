@@ -66,6 +66,5 @@ export class ListItemComponent implements OnInit, OnChanges {
 
   private notifySuccess(message: string): void {
     this.snackBar.open(message, 'Close', { duration: 2000, verticalPosition: 'top', horizontalPosition: 'center'});
-
   }
 }

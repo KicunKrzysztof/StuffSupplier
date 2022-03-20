@@ -15,7 +15,7 @@ export class HttpService {
     return this.http.get<T[]>(url);
   }
 
-  delete(path: string, id: number): Observable<boolean> {
+  delete(path: string, id: number | undefined): Observable<boolean> {
     const url = `${this.baseUrl}${path}/${id}`;
     return this.http.delete<boolean>(url);
   }
@@ -23,5 +23,10 @@ export class HttpService {
   put<T>(path: string, body: any): Observable<T> {
     const url = this.baseUrl + path;
     return this.http.put<T>(url, body);
+  }
+
+  post<T>(path: string, body: any): Observable<T> {
+    const url = this.baseUrl + path;
+    return this.http.post<T>(url, body);
   }
 }

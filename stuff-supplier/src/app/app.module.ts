@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -24,8 +25,11 @@ import { OfferListItemComponent } from './content/offer-list/offer-list-item/off
 import { HoldableDirective } from './shared/holdable.directive';
 import { RemoveButtonComponent } from './shared/remove-button/remove-button.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 import { SupplyDialogComponent } from './content/order-list/order-list-item/supply-dialog/supply-dialog.component';
 import { FormsModule } from '@angular/forms';
+import { NewOrderDialogComponent } from './header/new-order-dialog/new-order-dialog.component';
+import { NewOfferDialogComponent } from './header/new-offer-dialog/new-offer-dialog.component';
 
 
 @NgModule({
@@ -41,7 +45,9 @@ import { FormsModule } from '@angular/forms';
     OfferListItemComponent,
     HoldableDirective,
     RemoveButtonComponent,
-    SupplyDialogComponent
+    SupplyDialogComponent,
+    NewOrderDialogComponent,
+    NewOfferDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +63,9 @@ import { FormsModule } from '@angular/forms';
     MatSnackBarModule,
     MatDialogModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    MatSelectModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

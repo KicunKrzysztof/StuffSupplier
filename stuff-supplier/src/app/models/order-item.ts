@@ -5,5 +5,6 @@ export interface OrderItem {
     itemName: string;
     initialQuantity: number;
     providedQuantity: number;
+    quantity?: number;
     unit: Unit;
 }

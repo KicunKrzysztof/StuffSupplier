@@ -1,14 +1,16 @@
 <h1 mat-dialog-title>Supply order</h1>
+<form #form (ngSubmit)="onYesClick()">
 <div mat-dialog-content>
-    <mat-form-field appearance="fill">
     <div *ngFor="let item of data">
-        <span style="padding-right: 10px;">{{ item.itemName }}</span>
-        <input matInput type="number" min="0" [max]="item.initialQuantity - item.providedQuantity" style="width: 50px;" [(ngModel)]="item.providedQuantity">
+        <mat-form-field appearance="fill">
+            <mat-label>{{ item.itemName }} quantity</mat-label>
+                <input matInput type="number" [min]="1" [max]="item.initialQuantity - item.providedQuantity"
+                    [(ngModel)]="item.quantity" name="quantity">
+        </mat-form-field>
     </div>
-    </mat-form-field>
-
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button cdkFocusInitial (click)="onYesClick()">Supply</button>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button cdkFocusInitial type="submit">Supply</button>
 </div>
+</form>
