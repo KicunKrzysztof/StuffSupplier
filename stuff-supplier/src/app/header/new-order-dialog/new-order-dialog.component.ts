@@ -12,7 +12,7 @@ import { OrderItem } from 'src/app/models/order-item';
 export class NewOrderDialogComponent {
 
   address: Address;
-  orderItems: OrderItem[] = [{} as any];
+  orderItems: OrderItem[] = [{ providedQuantity: 0 } as any];
   constructor(
     public dialogRef: MatDialogRef<NewOrderDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Order
