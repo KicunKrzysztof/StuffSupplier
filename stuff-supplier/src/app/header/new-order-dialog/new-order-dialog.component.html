@@ -31,7 +31,7 @@
             <input required matInput [(ngModel)]="data.phoneNumber" name="phoneNumber">
         </mat-form-field>
         <p></p>
-        <h3>Items<button (click)="newItem()" mat-button><mat-icon>add_circle</mat-icon></button></h3>
+        <h3>Items<button type="button" (click)="newItem()" mat-button><mat-icon>add_circle</mat-icon></button></h3>
 
         <div *ngFor="let item of orderItems">
             <mat-form-field appearance="fill">

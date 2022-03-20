@@ -1,9 +1,9 @@
-import { Component, EventEmitter, Input, OnInit, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { HttpService } from '../../../http.service';
 import { Order } from 'src/app/models/order';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
-import { EMPTY, Observable, switchMap } from 'rxjs';
+import { of, switchMap } from 'rxjs';
 import { SupplyDialogComponent } from './supply-dialog/supply-dialog.component';
 import { OrderStatus } from 'src/app/enums/order-status';
 
@@ -12,7 +12,7 @@ import { OrderStatus } from 'src/app/enums/order-status';
   templateUrl: './order-list-item.component.html',
   styleUrls: ['./order-list-item.component.scss']
 })
-export class ListItemComponent implements OnInit, OnChanges {
+export class ListItemComponent implements OnChanges {
   constructor(private httpService: HttpService, private snackBar: MatSnackBar, public dialog: MatDialog) { }
 
   @Input() order: Order = {} as Order;
@@ -20,9 +20,6 @@ export class ListItemComponent implements OnInit, OnChanges {
   orderStatus: string;
   title: string;
 
-  ngOnInit(): void {
-    console.log(this.order);
-  }
   ngOnChanges(changes: SimpleChanges): void {
     if (this.order.orderStatus){
     this.orderStatus = OrderStatus[this.order.orderStatus];
@@ -30,24 +27,26 @@ export class ListItemComponent implements OnInit, OnChanges {
     }
     if (this.order.orderItems){
     this.order.orderItems.forEach(element => {
-      this.title = this.title + " " + element.itemName;
+      this.title = this.title + ", " + element.itemName;
     });
-    this.title = this.title.substring(0, 30)
+    this.title = this.title.substring(2, 100)
     }
     
   }
 
   supply(): void {
     const dialogRef = this.dialog.open(SupplyDialogComponent, {
-      width: '400px',
+      width: '300px',
       data: this.order.orderItems
     });
 
     dialogRef.afterClosed().pipe(
-      switchMap(result => result ? this.httpService.put('Order/order', this.order) : EMPTY)
+      switchMap(result => result ? this.httpService.put('Order/order', this.order) : of(null))
     ).subscribe((order: any) => {
-      if (order) 
+      if (order) {
+        this.orderStatus = OrderStatus[order.orderStatus];
         this.notifySuccess('Order successfully supplied');
+      }
     });
   }
 

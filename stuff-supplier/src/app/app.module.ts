@@ -31,6 +31,7 @@ import { FormsModule } from '@angular/forms';
 import { NewOrderDialogComponent } from './header/new-order-dialog/new-order-dialog.component';
 import { NewOfferDialogComponent } from './header/new-offer-dialog/new-offer-dialog.component';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { UnitPipe } from './pipes/UnitPipe';
 
@@ -71,7 +72,8 @@ import { UnitPipe } from './pipes/UnitPipe';
     MatSelectModule,
     MatInputModule,
     MatGridListModule,
-    MatDividerModule
+    MatDividerModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
