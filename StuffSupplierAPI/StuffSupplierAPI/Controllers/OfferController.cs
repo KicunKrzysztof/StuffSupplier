@@ -23,7 +23,7 @@ namespace StuffSupplierAPI.Controllers
         }
 
         [HttpGet]
-        [Route("offers/{offerId:int}")]
+        [Route("offer/{offerId:int}")]
         public async Task<IActionResult> GetOffer(int offerId)
         {
             var offer = await _offerService.GetOffer(offerId);
@@ -31,21 +31,21 @@ namespace StuffSupplierAPI.Controllers
         }
 
         [HttpPost]
-        [Route("offers")]
-        public async Task<IActionResult> CreateOrder(Offer newOffer)
+        [Route("offer")]
+        public async Task<IActionResult> CreateOffer(Offer newOffer)
         {
             var offer = await _offerService.AddOffer(newOffer);
             return Ok(offer);
         }
         [HttpPut]
-        [Route("offers")]
-        public async Task<IActionResult> UpdateOrder(Offer newOffer)
+        [Route("offer")]
+        public async Task<IActionResult> UpdateOffer(Offer newOffer)
         {
             var offer = await _offerService.UpdateOffer(newOffer);
             return Ok(offer);
         }
         [HttpDelete]
-        [Route("offers/{offerId:int}")]
+        [Route("offer/{offerId:int}")]
         public async Task<IActionResult> DeleteOffer(int offerId)
         {
             var result = await _offerService.DeleteOffer(offerId);

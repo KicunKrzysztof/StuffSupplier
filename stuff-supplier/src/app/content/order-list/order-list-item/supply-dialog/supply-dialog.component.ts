@@ -8,7 +8,7 @@ import { OrderItem } from 'src/app/models/order-item';
   styleUrls: ['./supply-dialog.component.scss']
 })
 export class SupplyDialogComponent {
-
+  quantity?: number;
   constructor(
     public dialogRef: MatDialogRef<SupplyDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: OrderItem[],
@@ -19,6 +19,10 @@ export class SupplyDialogComponent {
   }
 
   onYesClick(): void {
+    this.data.forEach(data => {
+      if (data.quantity && data.providedQuantity)
+        data.providedQuantity += data.quantity
+    })
     this.dialogRef.close(true);
   }
 }
