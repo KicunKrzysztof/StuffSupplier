@@ -23,6 +23,16 @@
             <mat-label>Qty</mat-label>
             <input type="number" matInput required [(ngModel)]="data.quantity" name="quantity">
         </mat-form-field>
+        <p></p>
+        <mat-form-field appearance="fill">
+            <mat-label>Phone Number</mat-label>
+            <input required matInput [(ngModel)]="data.phoneNumber" name="phoneNumber">
+        </mat-form-field>
+        <p></p>
+        <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input required matInput [(ngModel)]="data.email" name="email">
+        </mat-form-field>
         <div mat-dialog-actions>
             <button mat-button (click)="onNoClick()">Cancel</button>
             <button mat-button cdkFocusInitial type="submit">Create</button>

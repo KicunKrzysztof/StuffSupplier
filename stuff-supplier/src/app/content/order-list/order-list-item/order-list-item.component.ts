@@ -6,7 +6,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { EMPTY, Observable, switchMap } from 'rxjs';
 import { SupplyDialogComponent } from './supply-dialog/supply-dialog.component';
 import { OrderStatus } from 'src/app/enums/order-status';
-import { UnitPipe } from 'src/app/pipes/UnitPipe';
 
 @Component({
   selector: 'app-order-list-item',

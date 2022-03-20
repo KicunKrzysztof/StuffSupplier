@@ -6,4 +6,6 @@ export interface Offer {
     description?: string;
     quantity?: number;
     unit?: number;
+    phoneNumber?: string;
+    email?: string;
 }

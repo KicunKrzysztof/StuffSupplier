@@ -1,1 +1,1 @@
-<app-offer-list-item *ngFor="let offer of offers" [offer]="offer"></app-offer-list-item>
+<app-offer-list-item *ngFor="let offer of offers" [offer]="offer" (offerRemoved)="removeOffer($event)"></app-offer-list-item>

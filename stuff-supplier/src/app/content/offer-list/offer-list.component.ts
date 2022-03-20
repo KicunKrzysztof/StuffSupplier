@@ -31,4 +31,8 @@ export class OfferListComponent implements OnInit, OnDestroy {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
   }
+
+  removeOffer(id: number): void {
+    this.offers = this.offers.filter(o => o.id !== id);
+  }
 }

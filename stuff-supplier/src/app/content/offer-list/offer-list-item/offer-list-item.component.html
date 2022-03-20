@@ -31,6 +31,8 @@
           <p>Item name: </p>
           <p>Quantity: </p>
           <p>Unit: </p>
+          <p>Email: </p>
+          <p>Phone number: </p>
         </div>
     </mat-grid-tile>
       <mat-grid-tile class="second-cell">
@@ -38,8 +40,14 @@
           <p> {{ offer.itemName }} </p>
           <p> {{ offer.quantity }} </p>
           <p *ngIf="offer.unit"> {{ offer.unit | unitPipe }} </p>
+          <p> {{ offer.email }} </p>
+          <p> {{ offer.phoneNumber }} </p>
         </div>
       </mat-grid-tile>
     </mat-grid-list>
+
+    <div style="padding-top: 10px">
+      <app-remove-button (removed)="remove()" style="float:left"></app-remove-button>
+    </div>
 
   </mat-expansion-panel>
